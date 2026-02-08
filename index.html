@@ -1,49 +1,394 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Мой сайт</title>
- <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rev - Your personalized coffee</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* (CSS код остается тот же, что и в предыдущем сообщении) */
+        :root {
+            --primary-color: #415167;
+            --accent-color: #C7A17A;
+            --dark-gray: #151D28;
+            --light-gray: #EDF0F5;
+            --light-bg: #F9F5E8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, .display {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        h1 {
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 70px;
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--light-bg);
+            color: var(--dark-gray);
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-dark {
+            background-color: var(--light-gray);
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-content {
+            padding: 25px;
+        }
+        
+        .product-title {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
+            object-fit: contain;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: #b5916a;
+        }
+        
+        /* Contact Info */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
- <header>
- <div>
- <h1>МойСайт</h1>
- </div>
- <nav>
- <ul>
- <li><a href="#home">Главная</a></li>
- <li><a href="#about">О нас</a></li>
- <li><a href="#services">Услуги</a></li>
- <li><a href="#contact">Контакты</a></li>
- </ul>
- </nav>
- </header>
- <main>
- <section id="home">
- <h2>Добро пожаловать!</h2>
- <p>Это главная страница нашего веб-приложения.</p>
- </section>
- <section id="about">
- <h2>О нас</h2>
- <p>Мы компания, которая занимается созданием качественных веб-решений.
-</p>
- </section>
- <section id="services">
- <h2>Наши услуги</h2>
- <ul>
- <li>Веб-разработка</li>
- <li>Дизайн</li>
- <li>Консультации</li>
- </ul>
- </section>
- <section id="contact">
- <h2>Контакты</h2>
- <p>Email: info@example.com</p>
- <p>Телефон: +7 (123) 456-78-90</p>
- </section>
- </main>
- <footer>
- <p>&copy; 2025 Сайт. Все права защищены.</p>
- </foo
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="assets/img/logo.png" alt="Rev Coffee" class="logo-img">
+                <span class="logo-text">Rev</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#products">Продукты</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Your personalized coffee</h1>
+                <p style="font-size: 20px; margin: 30px 0; max-width: 600px; margin: 0 auto 30px;">
+                    Премиальный кофе, созданный специально для вас. Уникальные смеси, персональный подход и непревзойденное качество.
+                </p>
+                <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                    Выбрать свой кофе
+                </button>
+            </div>
+        </section>
+
+        <section id="products">
+            <div class="container">
+                <h2>Наша продукция</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="assets/img/image1.png" alt="Кофе Арабика" class="product-img">
+                        <div class="product-content">
+                            <h3 class="product-title">Арабика Премиум</h3>
+                            <p>Нежные фруктовые ноты с шоколадным послевкусием. Идеально для утреннего пробуждения.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="assets/img/image2.png" alt="Кофе Робуста" class="product-img">
+                        <div class="product-content">
+                            <h3 class="product-title">Робуста Классик</h3>
+                            <p>Насыщенный крепкий кофе с ореховыми нотами. Для любителей традиционного вкуса.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="assets/img/image3.png" alt="Авторская смесь" class="product-img">
+                        <div class="product-content">
+                            <h3 class="product-title">Авторская смесь</h3>
+                            <p>Уникальный купаж от нашего мастера обжарки. Сбалансированный вкус с карамельными нотами.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-dark">
+            <div class="container">
+                <h2>О компании Rev</h2>
+                <div class="about-content">
+                    <div class="about-img">
+                        <img src="assets/img/image4.png" alt="Наше производство">
+                    </div>
+                    <div class="about-text">
+                        <p style="margin-bottom: 20px;">
+                            Мы — команда энтузиастов, которая верит, что идеальная чашка кофе должна быть персонализирована. 
+                            С 2018 года мы создаем уникальные кофейные смеси, учитывая индивидуальные предпочтения каждого клиента.
+                        </p>
+                        <p>
+                            Наш подход сочетает современные технологии и вековые традиции обжарки кофе. 
+                            Мы работаем напрямую с фермерами из Эфиопии, Колумбии и Бразилии, чтобы гарантировать высочайшее качество зерен.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Наши услуги</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="assets/icons/icon1.png" alt="Консультация" class="service-icon">
+                        <h3>Кофейная консультация</h3>
+                        <p>Поможем выбрать идеальный кофе на основе ваших предпочтений</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/icons/icon2.png" alt="Обжарка" class="service-icon">
+                        <h3>Обжарка на заказ</h3>
+                        <p>Создадим уникальную степень обжарки специально для вас</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/icons/icon3.png" alt="Доставка" class="service-icon">
+                        <h3>Быстрая доставка</h3>
+                        <p>Доставим свежеобжаренный кофе в течение 24 часов</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/icons/icon4.png" alt="Подписка" class="service-icon">
+                        <h3>Кофейная подписка</h3>
+                        <p>Регулярные поставки свежего кофе по вашему графику</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-dark">
+            <div class="container">
+                <h2>Контакты</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3>Адрес</h3>
+                        <p>г. Москва, ул. Кофейная, д. 15</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Телефон</h3>
+                        <p>+7 (495) 123-45-67</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>info@rev-coffee.ru</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Часы работы</h3>
+                        <p>Пн-Пт: 9:00-21:00<br>Сб-Вс: 10:00-20:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 18px; margin-bottom: 20px;">&copy; 2025 Rev Coffee. Все права защищены.</p>
+            <p style="font-size: 16px; opacity: 0.8;">Your personalized coffee experience</p>
+        </div>
+    </footer>
+</body>
+</html>
