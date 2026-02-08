@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rev — Практическое занятие 3 (OOCSS)</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- OOCSS из документа -->
+    <link rel="stylesheet" href="oocss-doc.css">
+    
+    <style>
+        /* Минимальные стили для Rev */
+        body { color: #151D28; line-height: 1.6; }
+        h1 { line-height: 70px; }
+        .hero-section { padding: 150px 0 100px; margin-top: 80px; }
+        .section-padding { padding: 80px 0; }
+        .product-img { width: 100%; height: 250px; object-fit: cover; }
+        .service-icon { width: 70px; height: 70px; object-fit: contain; }
+    </style>
+</head>
+<body>
+    <!-- ХЕДЕР ПО ДОКУМЕНТУ (стр. 3) -->
+    <header class="container flex justify-between align-center rev-bg-primary padding-md" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
+        <div class="logo brand text-white">Rev</div>
+        <nav>
+            <ul class="list flex gap-md" style="list-style: none;">
+                <li class="list-item">
+                    <a class="link text-white border-bottom rev-border-accent transition hover-grow" href="#home">Главная</a>
+                </li>
+                <li class="list-item">
+                    <a class="link text-white transition hover-grow" href="#products">Продукты</a>
+                </li>
+                <li class="list-item">
+                    <a class="link text-white transition hover-grow" href="#about">О нас</a>
+                </li>
+                <li class="list-item">
+                    <a class="link text-white transition hover-grow" href="#services">Услуги</a>
+                </li>
+                <li class="list-item">
+                    <a class="link text-white transition hover-grow" href="#contact">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 100px;">
+        <!-- ГЛАВНАЯ -->
+        <section id="home" class="rev-bg-cream hero-section">
+            <div class="container text-center">
+                <h1 class="rev-text-accent" style="font-size: 54px; font-weight: 900;">Your personalized coffee</h1>
+                <p class="text-dark padding-lg" style="font-size: 20px; max-width: 600px; margin: 0 auto;">
+                    Премиальный кофе, созданный специально для вас.
+                </p>
+                <!-- КНОПКА С ИНТЕРАКТИВНОСТЬЮ ИЗ ДОКУМЕНТА (стр. 9) -->
+                <button class="rev-bg-accent text-white padding-md rounded transition hover-lift focus-outline active-scale"
+                        onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})"
+                        style="border: none; font-weight: bold; cursor: pointer;">
+                    Выбрать свой кофе
+                </button>
+            </div>
+        </section>
+
+        <!-- ПРОДУКТЫ (сетка из документа стр. 3) -->
+        <section id="products" class="section-padding">
+            <div class="container">
+                <h2 class="text-primary padding-md" style="font-size: 24px; font-weight: bold;">Наша продукция</h2>
+                <div class="grid cols-3 gap-lg">
+                    <!-- КАРТОЧКА ПО ДОКУМЕНТУ (стр. 3) -->
+                    <div class="card padding-lg border rounded bg-light transition hover-shadow">
+                        <img src="assets/img/image1.png" alt="Арабика" class="product-img">
+                        <h3 class="title-md rev-text-accent padding-sm">Арабика Премиум</h3>
+                        <p class="text">Нежные фруктовые ноты с шоколадным послевкусием.</p>
+                    </div>
+                    
+                    <div class="card padding-lg border rounded bg-light transition hover-shadow">
+                        <img src="assets/img/image2.png" alt="Робуста" class="product-img">
+                        <h3 class="title-md rev-text-accent padding-sm">Робуста Классик</h3>
+                        <p class="text">Насыщенный крепкий кофе с ореховыми нотами.</p>
+                    </div>
+                    
+                    <div class="card padding-lg border rounded bg-light transition hover-shadow">
+                        <img src="assets/img/image3.png" alt="Смесь" class="product-img">
+                        <h3 class="title-md rev-text-accent padding-sm">Авторская смесь</h3>
+                        <p class="text">Уникальный купаж от нашего мастера обжарки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- УСЛУГИ -->
+        <section id="services" class="rev-bg-light section-padding">
+            <div class="container">
+                <h2 class="text-primary padding-md" style="font-size: 24px; font-weight: bold;">Наши услуги</h2>
+                <div class="grid cols-4 gap-lg">
+                    <div class="card padding-lg border rounded bg-white text-center transition hover-lift">
+                        <img src="assets/icons/icon1.png" alt="Консультация" class="service-icon">
+                        <h3 class="title-md padding-sm">Кофейная консультация</h3>
+                        <p class="text">Поможем выбрать идеальный кофе</p>
+                    </div>
+                    
+                    <div class="card padding-lg border rounded bg-white text-center transition hover-lift">
+                        <img src="assets/icons/icon2.png" alt="Обжарка" class="service-icon">
+                        <h3 class="title-md padding-sm">Обжарка на заказ</h3>
+                        <p class="text">Создадим уникальную степень обжарки</p>
+                    </div>
+                    
+                    <div class="card padding-lg border rounded bg-white text-center transition hover-lift">
+                        <img src="assets/icons/icon3.png" alt="Доставка" class="service-icon">
+                        <h3 class="title-md padding-sm">Быстрая доставка</h3>
+                        <p class="text">Доставим свежеобжаренный кофе</p>
+                    </div>
+                    
+                    <div class="card padding-lg border rounded bg-white text-center transition hover-lift">
+                        <img src="assets/icons/icon4.png" alt="Подписка" class="service-icon">
+                        <h3 class="title-md padding-sm">Кофейная подписка</h3>
+                        <p class="text">Регулярные поставки свежего кофе</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="rev-bg-primary text-white padding-lg text-center">
+        <div class="container">
+            <p class="text-lg">© 2025 Rev Coffee. Все права защищены.</p>
+            <p class="text-sm">Your personalized coffee experience</p>
+        </div>
+    </footer>
+</body>
+</html>
